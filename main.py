@@ -3,7 +3,7 @@ import praw
 
 reddit = praw.Reddit(
     client_id="Your Client Id Here",
-    client_secret="Your Client Secret Here",
+    client_secret="Your Client secret Here",
     user_agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.84 Safari/537.36",
 )
 
@@ -11,8 +11,22 @@ reddit = praw.Reddit(
 def m(ui,nl):
     data = []
     ui_sr = reddit.subreddit(ui) 
-    for dat in ui_sr.hot(limit=nl):
-        data.append([dat.id, dat.name, dat.score, dat.title,dat.url,dat.selftext])
+    if uo == "hot":
+        print("Printing Hot Reddit's!!")
+        for dat in ui_sr.hot(limit=nl):
+            data.append([dat.id, dat.name, dat.score, dat.title,dat.url,dat.selftext])
+    elif uo == "new":
+        print("Printing New Reddit's!!")
+        for dat in ui_sr.new(limit=nl):
+            data.append([dat.id, dat.name, dat.score, dat.title,dat.url,dat.selftext])    
+    elif uo == "top":
+        print("Printing Top Reddit's!!")
+        for dat in ui_sr.top(limit=nl):
+            data.append([dat.id, dat.name, dat.score, dat.title,dat.url,dat.selftext])
+    elif uo == "rising":
+        print("Printing Rising Reddit's!!")
+        for dat in ui_sr.rising(limit=nl):
+            data.append([dat.id, dat.name, dat.score, dat.title,dat.url,dat.selftext])   
     data = pd.DataFrame(data,columns=['id','name','score','title','url','body'])
     fn = input("\nEnter the filename: ")
     data.to_excel(fn+".xlsx")
