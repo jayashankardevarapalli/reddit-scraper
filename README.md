@@ -19,7 +19,7 @@ Install the dependencies with following command:
 ```javascript
 python3 main.py
 ```
-![Useage](img/git.png)
+![Useage!](/img/git.png)
 
 ## Authors
 
