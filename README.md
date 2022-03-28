@@ -25,7 +25,7 @@ python3 main.py
 ```
 ![Useage!](/img/g1.png)
 
-## Authors
+## Author
 
 - [@MrJayashankar](https://twitter.com/MrJayashankar)
 
